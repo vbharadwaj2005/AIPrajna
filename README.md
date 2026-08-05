@@ -8,7 +8,6 @@ Ingest documents, semantically chunk them, index into ChromaDB, then query via *
 ### Setup
 
 ```bash
-git clone https://github.com/vbharadwaj2005/DocInsight && cd DocInsight
 python -m venv .venv
 
 # Windows
