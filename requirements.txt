@@ -1,0 +1,27 @@
+# ── Core framework ──────────────────────────────────────────
+langchain>=0.3.0
+langchain-community>=0.3.0
+langchain-text-splitters>=0.3.0
+langchain-chroma>=0.2.0
+
+# ── LLM ────────────────────────────────────────────────────
+langchain-huggingface>=0.1.0
+
+# ── Document loaders ───────────────────────────────────────
+pypdf>=5.0.0
+docx2txt>=0.8
+
+# ── Embeddings & vector search ─────────────────────────────
+sentence-transformers>=3.0.0
+chromadb>=0.5.0
+rank-bm25>=0.2.2
+
+# ── Re-ranker ──────────────────────────────────────────────
+scikit-learn>=1.5.0
+
+# ── UI ─────────────────────────────────────────────────────
+streamlit>=1.37.0
+
+# ── Utilities ──────────────────────────────────────────────
+python-dotenv>=1.0.0
+numpy>=1.26.0
