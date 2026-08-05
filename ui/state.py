@@ -1,9 +1,14 @@
+"""
+DocInsight — Streamlit Session State Initialization.
+"""
+
 from __future__ import annotations
 
 import streamlit as st
 
 
 def init_session_state() -> None:
+    """Initialize Streamlit session state with application defaults."""
     defaults: dict[str, object] = {
         "retriever": None,
         "vectorstore": None,

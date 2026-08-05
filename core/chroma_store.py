@@ -1,13 +1,19 @@
+"""
+DocInsight — ChromaDB Persistent Vector Store Engine.
+"""
+
 from __future__ import annotations
 
 import chromadb
 import numpy as np
 from langchain_core.documents import Document
 
-from src.config import CHROMA_DIR, logger
+from core.config import CHROMA_DIR, logger
 
 
 class ChromaStore:
+    """Interface wrapper around ChromaDB persistent vector collection."""
+
     def __init__(self, collection_name: str) -> None:
         self._client = chromadb.PersistentClient(str(CHROMA_DIR))
         self._collection = self._client.get_or_create_collection(
@@ -40,26 +46,5 @@ class ChromaStore:
         )
         logger.info("Indexed %d vectors in ChromaDB", len(documents))
 
-    def similarity_search(self, query_embedding: np.ndarray, k: int = 10) -> list[Document]:
-        results = self._collection.query(
-            query_embeddings=query_embedding.reshape(1, -1).tolist(),
-            n_results=k,
-        )
-
-        return [
-            Document(
-                page_content=results["documents"][0][i],
-                metadata=results["metadatas"][0][i],
-            )
-            for i in range(len(results["ids"][0]))
-        ]
-
     def count(self) -> int:
         return self._collection.count()
-
-    def delete_collection(self) -> None:
-        try:
-            self._client.delete_collection(self._collection.name)
-            logger.info("Deleted collection '%s'", self._collection.name)
-        except Exception as exc:
-            logger.warning("Failed to delete collection: %s", exc)

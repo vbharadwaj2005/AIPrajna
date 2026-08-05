@@ -1,9 +1,13 @@
+"""
+DocInsight — RAG Pipeline & LLM Answer Generation.
+"""
+
 from __future__ import annotations
 
 from langchain_core.documents import Document
 from langchain_huggingface import HuggingFaceEndpoint
 
-from src.config import (
+from core.config import (
     HUGGINGFACE_API_KEY,
     HUGGINGFACE_MODEL,
     MAX_INPUT_LENGTH,
@@ -26,6 +30,8 @@ Answer:"""
 
 
 class LlmService:
+    """Singleton LLM client via HuggingFace Inference API."""
+
     _instance: HuggingFaceEndpoint | None = None
 
     def _get_llm(self) -> HuggingFaceEndpoint:
@@ -64,6 +70,7 @@ def _format_context(documents: list[tuple[Document, float]]) -> str:
 
 
 def answer_query(question: str, documents: list[tuple[Document, float]]) -> str:
+    """Generate LLM answer from re-ranked document context."""
     context = _format_context(documents)
 
     if len(context) > MAX_INPUT_LENGTH:
@@ -75,6 +82,7 @@ def answer_query(question: str, documents: list[tuple[Document, float]]) -> str:
 
 
 def extract_sources(documents: list[tuple[Document, float]]) -> list[dict]:
+    """Deduplicate and format source attribution from retrieval results."""
     seen: set[str] = set()
     sources: list[dict] = []
 

@@ -1,14 +1,17 @@
+"""
+DocInsight — Compliance Multi-Document RAG Platform (Streamlit)
+Main entry point for running the Streamlit application.
+"""
+
 from __future__ import annotations
 
 import streamlit as st
 
-from src.ui.chat import render_chat_interface
-from src.ui.sidebar import render_sidebar
-from src.ui.state import init_session_state
+from ui import init_session_state, render_chat_interface, render_sidebar
 
 st.set_page_config(
-    page_title="DocInsight",
-    page_icon="\U0001f50d",
+    page_title="DocInsight — Compliance RAG",
+    page_icon="🔍",
     layout="wide",
     initial_sidebar_state="expanded",
 )

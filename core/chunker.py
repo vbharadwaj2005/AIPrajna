@@ -1,3 +1,7 @@
+"""
+DocInsight — Semantic Document Chunking & Text Splitting.
+"""
+
 from __future__ import annotations
 
 import numpy as np
@@ -5,8 +9,8 @@ from langchain_core.documents import Document
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from sklearn.metrics.pairwise import cosine_similarity
 
-from src.config import CHUNK_OVERLAP, CHUNK_SIZE, SEMANTIC_THRESHOLD, logger
-from src.embedding.embedder import embedding_service
+from core.config import CHUNK_OVERLAP, CHUNK_SIZE, SEMANTIC_THRESHOLD, logger
+from core.embedder import embedding_service
 
 
 def _build_splitter() -> RecursiveCharacterTextSplitter:
@@ -49,6 +53,7 @@ def _merge_related_chunks(chunks: list[Document]) -> list[Document]:
 
 
 def semantic_chunk(documents: list[Document]) -> list[Document]:
+    """Execute recursive character splitting followed by semantic embedding merging."""
     if not documents:
         return []
 

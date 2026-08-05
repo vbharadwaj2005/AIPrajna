@@ -1,20 +1,26 @@
+"""
+DocInsight — Sidebar Document Management & Index Control.
+"""
+
 from __future__ import annotations
 
 import os
 import tempfile
 from pathlib import Path
+
 import streamlit as st
 from langchain_core.documents import Document
 
-from src.config import COLLECTION_NAME, DATA_DIR, HUGGINGFACE_MODEL
-from src.embedding.embedder import embedding_service
-from src.ingestion.chunker import semantic_chunk
-from src.ingestion.loader import load_document, load_documents_from_dir
-from src.retrieval.hybrid_search import HybridRetriever
-from src.vectorstore.chroma_store import ChromaStore
+from core.chroma_store import ChromaStore
+from core.chunker import semantic_chunk
+from core.config import COLLECTION_NAME, DATA_DIR, HUGGINGFACE_MODEL
+from core.embedder import embedding_service
+from core.hybrid_search import HybridRetriever
+from core.loader import load_document, load_documents_from_dir
 
 
 def render_sidebar() -> None:
+    """Render the document management sidebar."""
     with st.sidebar:
         st.header("Documents")
         upload_tab, folder_tab, status_tab = st.tabs(["Upload", "From Folder", "Status"])

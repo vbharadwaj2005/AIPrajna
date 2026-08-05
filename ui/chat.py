@@ -1,14 +1,19 @@
+"""
+DocInsight — Chat Interface Rendering.
+"""
+
 from __future__ import annotations
 
 import streamlit as st
 
-from src.config import logger
-from src.embedding.embedder import embedding_service
-from src.rag.pipeline import answer_query, extract_sources
-from src.retrieval.reranker import reranker
+from core.config import logger
+from core.embedder import embedding_service
+from core.pipeline import answer_query, extract_sources
+from core.reranker import reranker
 
 
 def render_sources(sources: list[dict]) -> None:
+    """Display source attribution badges in an expandable panel."""
     with st.expander("View sources", expanded=False):
         for source in sources:
             label = (
@@ -21,6 +26,7 @@ def render_sources(sources: list[dict]) -> None:
 
 
 def render_chat_interface() -> None:
+    """Render the conversational chat interface with RAG-powered responses."""
     for msg in st.session_state.messages:
         with st.chat_message(msg["role"]):
             st.markdown(msg["content"])

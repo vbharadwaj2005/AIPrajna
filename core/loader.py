@@ -1,3 +1,7 @@
+"""
+DocInsight — Document Loader for PDF, TXT, and DOCX files.
+"""
+
 from __future__ import annotations
 
 from pathlib import Path
@@ -9,21 +13,8 @@ from langchain_community.document_loaders import (
 )
 from langchain_core.documents import Document
 
-from src.config import logger
-
-SUPPORTED_EXTENSIONS: set[str] = {".pdf", ".txt", ".docx"}
-
-
-def _validate_path(path: str | Path) -> Path:
-    resolved = Path(path).resolve()
-    if not resolved.exists():
-        raise FileNotFoundError(f"File not found: {resolved}")
-    if resolved.suffix.lower() not in SUPPORTED_EXTENSIONS:
-        raise ValueError(
-            f"Unsupported file type '{resolved.suffix}'. "
-            f"Supported: {', '.join(sorted(SUPPORTED_EXTENSIONS))}"
-        )
-    return resolved
+from core.config import logger
+from core.utils import SUPPORTED_EXTENSIONS, validate_file_path
 
 
 def _pick_loader(path: Path):
@@ -36,7 +27,8 @@ def _pick_loader(path: Path):
 
 
 def load_document(file_path: str | Path) -> list[Document]:
-    path = _validate_path(file_path)
+    """Load a single document artifact into LangChain Document instances."""
+    path = validate_file_path(file_path)
     loader = _pick_loader(path)
     docs = loader.load()
     for doc in docs:
@@ -47,6 +39,7 @@ def load_document(file_path: str | Path) -> list[Document]:
 
 
 def load_documents_from_dir(directory: str | Path) -> list[Document]:
+    """Recursively load all supported document formats from a target directory."""
     resolved = Path(directory).resolve()
     if not resolved.is_dir():
         raise NotADirectoryError(f"Not a directory: {resolved}")

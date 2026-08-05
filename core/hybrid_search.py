@@ -1,13 +1,19 @@
+"""
+DocInsight — Hybrid Dense + BM25 Sparse Retrieval Engine.
+"""
+
 from __future__ import annotations
 
 import numpy as np
 from langchain_core.documents import Document
 from rank_bm25 import BM25Okapi
 
-from src.config import HYBRID_WEIGHT_DENSE, TOP_K_INITIAL, logger
+from core.config import HYBRID_WEIGHT_DENSE, TOP_K_INITIAL, logger
 
 
 class HybridRetriever:
+    """Weighted fusion of dense vector cosine similarity and BM25 keyword scores."""
+
     def __init__(self, documents: list[Document]) -> None:
         if not documents:
             raise ValueError("At least one document is required to build the retriever")

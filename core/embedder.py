@@ -1,12 +1,18 @@
+"""
+DocInsight — Vector Embedding Service.
+"""
+
 from __future__ import annotations
 
 import numpy as np
 from sentence_transformers import SentenceTransformer
 
-from src.config import EMBEDDING_MODEL, logger
+from core.config import EMBEDDING_MODEL, logger
 
 
 class EmbeddingService:
+    """Singleton service for generating dense text vector embeddings."""
+
     _instance: SentenceTransformer | None = None
 
     def _get_model(self) -> SentenceTransformer:
@@ -20,7 +26,7 @@ class EmbeddingService:
             return np.array([], dtype=np.float32)
         model = self._get_model()
         logger.info("Embedding %d text(s)...", len(texts))
-        return model.encode(texts, show_progress_bar=True, normalize_embeddings=True)
+        return model.encode(texts, show_progress_bar=False, normalize_embeddings=True)
 
     def embed_query(self, query: str) -> np.ndarray:
         model = self._get_model()

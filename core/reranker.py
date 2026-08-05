@@ -1,12 +1,18 @@
+"""
+DocInsight — Cross-Encoder Re-ranking Service.
+"""
+
 from __future__ import annotations
 
 from langchain_core.documents import Document
 from sentence_transformers import CrossEncoder
 
-from src.config import CROSS_ENCODER_MODEL, TOP_K_RERANKED, logger
+from core.config import CROSS_ENCODER_MODEL, TOP_K_RERANKED, logger
 
 
 class Reranker:
+    """Singleton cross-encoder re-ranker for passage relevance scoring."""
+
     _instance: CrossEncoder | None = None
 
     def _get_model(self) -> CrossEncoder:
