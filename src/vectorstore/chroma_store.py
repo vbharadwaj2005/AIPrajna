@@ -1,7 +1,5 @@
 from __future__ import annotations
 
-from typing import List
-
 import chromadb
 import numpy as np
 from langchain_core.documents import Document
@@ -18,10 +16,10 @@ class ChromaStore:
         )
         logger.info("ChromaDB collection '%s' ready at %s", collection_name, CHROMA_DIR)
 
-    def add_documents(self, documents: List[Document], embeddings: np.ndarray) -> None:
-        ids: List[str] = []
-        metadatas: List[dict] = []
-        texts: List[str] = []
+    def add_documents(self, documents: list[Document], embeddings: np.ndarray) -> None:
+        ids: list[str] = []
+        metadatas: list[dict] = []
+        texts: list[str] = []
 
         for idx, doc in enumerate(documents):
             chunk_id = doc.metadata.get("chunk_id", idx)
@@ -42,7 +40,7 @@ class ChromaStore:
         )
         logger.info("Indexed %d vectors in ChromaDB", len(documents))
 
-    def similarity_search(self, query_embedding: np.ndarray, k: int = 10) -> List[Document]:
+    def similarity_search(self, query_embedding: np.ndarray, k: int = 10) -> list[Document]:
         results = self._collection.query(
             query_embeddings=query_embedding.reshape(1, -1).tolist(),
             n_results=k,

@@ -5,10 +5,8 @@ from langchain_core.documents import Document
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from sklearn.metrics.pairwise import cosine_similarity
 
-from src.config import CHUNK_OVERLAP, CHUNK_SIZE, logger
+from src.config import CHUNK_OVERLAP, CHUNK_SIZE, SEMANTIC_THRESHOLD, logger
 from src.embedding.embedder import embedding_service
-
-_SEMANTIC_THRESHOLD = 0.75
 
 
 def _build_splitter() -> RecursiveCharacterTextSplitter:
@@ -21,7 +19,7 @@ def _build_splitter() -> RecursiveCharacterTextSplitter:
 
 
 def _merge_related_chunks(chunks: list[Document]) -> list[Document]:
-    logger.info("Merging semantically similar chunks (threshold=%.2f)...", _SEMANTIC_THRESHOLD)
+    logger.info("Merging semantically similar chunks (threshold=%.2f)...", SEMANTIC_THRESHOLD)
     texts = [c.page_content for c in chunks]
     embeddings: np.ndarray = embedding_service.embed_texts(texts)
 
@@ -34,7 +32,7 @@ def _merge_related_chunks(chunks: list[Document]) -> list[Document]:
 
         while next_idx < len(chunks):
             similarity = cosine_similarity([current_emb], [embeddings[next_idx]])[0][0]
-            if similarity > _SEMANTIC_THRESHOLD:
+            if similarity > SEMANTIC_THRESHOLD:
                 current.page_content += "\n\n" + chunks[next_idx].page_content
                 for key, value in chunks[next_idx].metadata.items():
                     current.metadata.setdefault(key, value)

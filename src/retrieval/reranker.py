@@ -1,7 +1,5 @@
 from __future__ import annotations
 
-from typing import List, Tuple
-
 from langchain_core.documents import Document
 from sentence_transformers import CrossEncoder
 
@@ -20,8 +18,8 @@ class Reranker:
     def rerank(
         self,
         query: str,
-        candidates: List[Tuple[Document, float]],
-    ) -> List[Tuple[Document, float]]:
+        candidates: list[tuple[Document, float]],
+    ) -> list[tuple[Document, float]]:
         if not candidates:
             return []
 

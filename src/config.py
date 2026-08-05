@@ -28,6 +28,7 @@ HUGGINGFACE_MODEL = os.getenv("HUGGINGFACE_MODEL", "microsoft/Phi-3-mini-4k-inst
 
 CHUNK_SIZE = int(os.getenv("CHUNK_SIZE", "512"))
 CHUNK_OVERLAP = int(os.getenv("CHUNK_OVERLAP", "64"))
+SEMANTIC_THRESHOLD = float(os.getenv("SEMANTIC_THRESHOLD", "0.75"))
 TOP_K_INITIAL = int(os.getenv("TOP_K_INITIAL", "20"))
 TOP_K_RERANKED = int(os.getenv("TOP_K_RERANKED", "5"))
 HYBRID_WEIGHT_DENSE = float(os.getenv("HYBRID_WEIGHT_DENSE", "0.5"))

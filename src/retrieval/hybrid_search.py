@@ -1,16 +1,14 @@
 from __future__ import annotations
 
-from typing import List, Tuple
-
 import numpy as np
 from langchain_core.documents import Document
 from rank_bm25 import BM25Okapi
 
-from src.config import TOP_K_INITIAL, HYBRID_WEIGHT_DENSE, logger
+from src.config import HYBRID_WEIGHT_DENSE, TOP_K_INITIAL, logger
 
 
 class HybridRetriever:
-    def __init__(self, documents: List[Document]) -> None:
+    def __init__(self, documents: list[Document]) -> None:
         if not documents:
             raise ValueError("At least one document is required to build the retriever")
 
@@ -28,7 +26,7 @@ class HybridRetriever:
         query: str,
         query_embedding: np.ndarray,
         dense_index: np.ndarray,
-    ) -> List[Tuple[Document, float]]:
+    ) -> list[tuple[Document, float]]:
         dense_scores = np.dot(dense_index, query_embedding)
         d_min, d_max = dense_scores.min(), dense_scores.max()
         if d_max - d_min > 1e-8:
