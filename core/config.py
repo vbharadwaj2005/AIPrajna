@@ -15,7 +15,6 @@ try:
 except ImportError:
     pass
 
-# Logging setup
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
@@ -23,19 +22,16 @@ logging.basicConfig(
 )
 logger = logging.getLogger("docinsight")
 
-# Directory paths
 BASE_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = BASE_DIR / "data" / "documents"
 CHROMA_DIR = BASE_DIR / "storage" / "chroma"
 
-# Embedding and Model settings
 EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "sentence-transformers/all-MiniLM-L6-v2")
 CROSS_ENCODER_MODEL = os.getenv("CROSS_ENCODER_MODEL", "cross-encoder/ms-marco-MiniLM-L-6-v2")
 
 HUGGINGFACE_API_KEY = os.getenv("HUGGINGFACE_API_KEY", "")
 HUGGINGFACE_MODEL = os.getenv("HUGGINGFACE_MODEL", "microsoft/Phi-3-mini-4k-instruct")
 
-# Retrieval & Ingestion settings
 CHUNK_SIZE = int(os.getenv("CHUNK_SIZE", "512"))
 CHUNK_OVERLAP = int(os.getenv("CHUNK_OVERLAP", "64"))
 SEMANTIC_THRESHOLD = float(os.getenv("SEMANTIC_THRESHOLD", "0.75"))

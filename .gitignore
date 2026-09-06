@@ -1,22 +1,45 @@
-# Python
+﻿# Python
 __pycache__/
-*.pyc
-*.pyo
+*.py[cod]
+*.class
 *.egg-info/
-.streamlit/
+dist/
+build/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Environments
 .venv/
 venv/
+env/
+ENV/
 .env
+
+# Chroma vector database and storage
+storage/
+chroma/
+*.sqlite3
+
+# Uploaded documents
+data/documents/
+data/
 
 # Streamlit
 .streamlit/secrets.toml
 
-# IDE
+# Logs & temporary files
+*.log
+logs/
+tmp/
+
+# IDE & Editor files
 .vscode/
 .idea/
 *.swp
 *.swo
+*~
 
-# OS
+# Operating System files
 .DS_Store
 Thumbs.db
