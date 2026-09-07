@@ -1,4 +1,4 @@
-﻿# DocInsight: Compliance Multi-Document RAG Platform
+﻿# AIPrajna: Compliance Multi-Document RAG Platform
 
 **Compliance Multi-Document RAG** — zero external data leakage, fully auditable answers across your PDF / DOCX / TXT files.
 Ingest documents, semantically chunk them, index into ChromaDB, then query via **hybrid search (BM25 + dense vectors)** + **cross-encoder re-ranking**. The LLM runs through HuggingFace Inference API (free tier); embeddings and re-ranking run entirely **on your machine**.
@@ -72,7 +72,7 @@ Ingest documents, semantically chunk them, index into ChromaDB, then query via *
 ### Setup Steps
 
 ```bash
-cd DocInsight
+cd AIPrajna
 python -m venv .venv
 
 # Windows:

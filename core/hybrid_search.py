@@ -1,5 +1,5 @@
 """
-DocInsight — Hybrid Dense + BM25 Sparse Retrieval Engine.
+AIPrajna — Hybrid Dense + BM25 Sparse Retrieval Engine.
 """
 
 from __future__ import annotations

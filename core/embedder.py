@@ -1,5 +1,5 @@
 """
-DocInsight — Vector Embedding Service.
+AIPrajna — Vector Embedding Service.
 """
 
 from __future__ import annotations

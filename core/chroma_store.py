@@ -1,5 +1,5 @@
 """
-DocInsight — ChromaDB Persistent Vector Store Engine.
+AIPrajna — ChromaDB Persistent Vector Store Engine.
 """
 
 from __future__ import annotations

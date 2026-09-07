@@ -1,5 +1,5 @@
 """
-DocInsight — Configuration and Environment Settings.
+AIPrajna — Configuration and Environment Settings.
 """
 
 from __future__ import annotations
@@ -20,7 +20,7 @@ logging.basicConfig(
     format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
     stream=sys.stdout,
 )
-logger = logging.getLogger("docinsight")
+logger = logging.getLogger("aiprajna")
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = BASE_DIR / "data" / "documents"
@@ -38,7 +38,7 @@ SEMANTIC_THRESHOLD = float(os.getenv("SEMANTIC_THRESHOLD", "0.75"))
 TOP_K_INITIAL = int(os.getenv("TOP_K_INITIAL", "20"))
 TOP_K_RERANKED = int(os.getenv("TOP_K_RERANKED", "5"))
 HYBRID_WEIGHT_DENSE = float(os.getenv("HYBRID_WEIGHT_DENSE", "0.5"))
-COLLECTION_NAME = os.getenv("COLLECTION_NAME", "docinsight")
+COLLECTION_NAME = os.getenv("COLLECTION_NAME", "aiprajna")
 MAX_INPUT_LENGTH = int(os.getenv("MAX_INPUT_LENGTH", "4096"))
 
 if not 0 <= HYBRID_WEIGHT_DENSE <= 1:

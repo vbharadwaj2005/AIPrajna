@@ -1,5 +1,5 @@
 """
-DocInsight — Sidebar Document Management & Index Control.
+AIPrajna — Sidebar Document Management & Index Control.
 """
 
 from __future__ import annotations

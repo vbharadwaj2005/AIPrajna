@@ -1,5 +1,5 @@
 """
-DocInsight — RAG Pipeline & LLM Answer Generation.
+AIPrajna — RAG Pipeline & LLM Answer Generation.
 """
 
 from __future__ import annotations

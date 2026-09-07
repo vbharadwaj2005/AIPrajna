@@ -1,5 +1,5 @@
 """
-DocInsight — Document Loader for PDF, TXT, and DOCX files.
+AIPrajna — Document Loader for PDF, TXT, and DOCX files.
 """
 
 from __future__ import annotations

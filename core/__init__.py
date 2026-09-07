@@ -1,5 +1,5 @@
 """
-DocInsight — Core RAG Engine Package.
+AIPrajna — Core RAG Engine Package.
 """
 
 from __future__ import annotations

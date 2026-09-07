@@ -1,5 +1,5 @@
 """
-DocInsight — Streamlit Session State Initialization.
+AIPrajna — Streamlit Session State Initialization.
 """
 
 from __future__ import annotations

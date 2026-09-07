@@ -1,5 +1,5 @@
 """
-DocInsight — Chat Interface Rendering.
+AIPrajna — Chat Interface Rendering.
 """
 
 from __future__ import annotations

@@ -1,5 +1,5 @@
 """
-DocInsight — Utility and Helper Functions.
+AIPrajna — Utility and Helper Functions.
 """
 
 from __future__ import annotations

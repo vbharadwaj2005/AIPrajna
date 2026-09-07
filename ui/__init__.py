@@ -1,5 +1,5 @@
 """
-DocInsight — User Interface Package.
+AIPrajna — User Interface Package.
 """
 
 from __future__ import annotations

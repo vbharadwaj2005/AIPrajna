@@ -1,5 +1,5 @@
 """
-DocInsight — Semantic Document Chunking & Text Splitting.
+AIPrajna — Semantic Document Chunking & Text Splitting.
 """
 
 from __future__ import annotations
